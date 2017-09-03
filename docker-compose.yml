@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  mysql:
+    image: mysql:5.7
+    container_name: docker-mysql5.7
+    ports:
+      - 4444:3306
+    hostname: mysql
+    volumes:
+      - ./.local:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: docker_mysql
+    networks:
+      - apinetwork
+networks: 
+  apinetwork:
+    driver: bridge
+
